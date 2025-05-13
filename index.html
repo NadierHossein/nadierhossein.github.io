@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Nadir Hussain</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2d3436;
+            --secondary: #0984e3;
+            --accent: #74b9ff;
+            --light: #f5f6fa;
+            --dark: #2d3436;
+            --gradient: linear-gradient(135deg, #0984e3, #74b9ff);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Home Section */
+        #hero {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 4rem;
+            background: var(--light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 15px solid var(--light);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            line-height: 1.2;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .hero-subtitle::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 80%;
+            background: var(--secondary);
+            border-radius: 4px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .cta-btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cta-btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 10px 20px rgba(9, 132, 227, 0.3);
+        }
+
+        .cta-btn-secondary {
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(9, 132, 227, 0.4);
+        }
+
+        /* About Section */
+        #about {
+            padding: 8rem 2rem;
+            background: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            padding-right: 2rem;
+        }
+
+        .section-heading {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .education-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-top: 2rem;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 20px;
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .skill-item::before {
+            content: '▹';
+            color: var(--secondary);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @media (max-width: 768px) {
+            #hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 6rem 1rem;
+            }
+
+            .profile-img {
+                width: 280px;
+                height: 280px;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+		 /* Projects Section */
+    #projects {
+        padding: 8rem 2rem;
+        background: var(--light);
+    }
+
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .project-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+        cursor: pointer;
+    }
+
+    .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-image-container {
+        height: 250px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .project-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s;
+    }
+
+    .project-card:hover .project-image {
+        transform: scale(1.05);
+    }
+
+    .project-content {
+        padding: 1.5rem;
+    }
+
+    .project-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--primary);
+    }
+
+    .project-description {
+        color: #666;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+
+    .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .project-tag {
+        background: var(--light);
+        color: var(--secondary);
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        border: 1px solid rgba(9, 132, 227, 0.2);
+    }
+
+    .project-btn {
+        background: var(--gradient);
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .project-btn:hover {
+        opacity: 0.9;
+        transform: translateX(5px);
+    }
+
+    /* Project Modal */
+    .project-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 9999;
+        padding: 2rem;
+    }
+
+    .modal-content {
+        background: white;
+        max-width: 800px;
+        margin: 2rem auto;
+        border-radius: 20px;
+        overflow: hidden;
+        animation: modalOpen 0.3s ease-out;
+    }
+
+    @keyframes modalOpen {
+        from { transform: scale(0.9); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-image {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+    }
+
+    .modal-text {
+        padding: 2rem;
+    }
+
+    .modal-title {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: var(--primary);
+    }
+
+    .modal-description {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #444;
+        margin-bottom: 2rem;
+    }
+
+    .close-modal {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        font-size: 2rem;
+        color: var(--primary);
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+
+    .close-modal:hover {
+        color: var(--secondary);
+    }
+
+
+	 /* Experience Section */
+    #experience {
+        padding: 8rem 2rem;
+        background: white;
+    }
+
+    .timeline-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .timeline-container::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        width: 4px;
+        height: 100%;
+        background: var(--secondary);
+        transform: translateX(-50%);
+    }
+
+    .timeline-item {
+        position: relative;
+        width: 50%;
+        padding: 2rem;
+        transition: all 0.3s ease;
+    }
+
+    .timeline-item:nth-child(odd) {
+        left: 0;
+        padding-right: 4rem;
+        text-align: right;
+    }
+
+    .timeline-item:nth-child(even) {
+        left: 50%;
+        padding-left: 4rem;
+    }
+
+    .timeline-dot {
+        position: absolute;
+        top: 2rem;
+        width: 20px;
+        height: 20px;
+        background: white;
+        border: 4px solid var(--secondary);
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot {
+        right: -12px;
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: -8px;
+    }
+
+    .timeline-content {
+        background: var(--light);
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        position: relative;
+    }
+
+    .timeline-date {
+        font-weight: 600;
+        color: var(--secondary);
+        margin-bottom: 0.5rem;
+    }
+
+    .timeline-title {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        color: var(--primary);
+    }
+
+    .timeline-company {
+        color: #666;
+        margin-bottom: 1rem;
+        font-weight: 500;
+    }
+
+    .timeline-description {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .timeline-description li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .timeline-description li::before {
+        content: '▹';
+        position: absolute;
+        left: 0;
+        color: var(--secondary);
+    }
+
+    @media (max-width: 768px) {
+        .timeline-container::before {
+            left: 20px;
+        }
+
+        .timeline-item {
+            width: 100%;
+            padding-left: 50px;
+            padding-right: 0;
+            text-align: left !important;
+        }
+
+        .timeline-item:nth-child(odd),
+        .timeline-item:nth-child(even) {
+            left: 0;
+            padding-right: 0;
+            padding-left: 50px;
+        }
+
+        .timeline-dot {
+            left: 6px !important;
+            right: auto !important;
+        }
+    }
+
+
+	  /* Contact Section */
+    #contact {
+        padding: 8rem 2rem;
+        background: var(--light);
+    }
+
+    .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .info-card {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .contact-subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        color: var(--primary);
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+        padding: 1rem;
+        border-radius: 12px;
+        transition: all 0.3s;
+    }
+
+    .contact-item:hover {
+        background: rgba(9, 132, 227, 0.05);
+    }
+
+    .contact-item i {
+        font-size: 1.5rem;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--secondary);
+        color: white;
+        border-radius: 50%;
+    }
+
+    .contact-label {
+        display: block;
+        font-weight: 500;
+        color: #666;
+        margin-bottom: 0.3rem;
+    }
+
+    .contact-value {
+        color: var(--primary);
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .contact-value:hover {
+        color: var(--secondary);
+    }
+
+    .contact-form {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-title {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        color: var(--primary);
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 1rem;
+        border: 2px solid #eee;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: all 0.3s;
+    }
+
+    input:focus, textarea:focus {
+        border-color: var(--secondary);
+        outline: none;
+        box-shadow: 0 5px 15px rgba(9, 132, 227, 0.1);
+    }
+
+    .submit-btn {
+        background: var(--gradient);
+        color: white;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 50px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .submit-btn:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(9, 132, 227, 0.3);
+    }
+
+    @media (max-width: 768px) {
+        .contact-container {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+    }
+	/* Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #00aeff;
+            color: rgb(0, 0, 0);
+        }
+        .navbar .brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+        .nav-list a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+        .nav-list a:hover {
+            color: #00aaff;
+        }
+
+    </style>
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+<nav class="navbar">
+    <ul class="nav-list">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact Me</a></li>
+    </ul>
+</nav>
+<!-- Home Section -->
+<section id="hero" style="background-image: url('background.jpg'); background-size: cover; background-position: center;">
+    <div class="hero-content" data-animate>
+        <h1 class="hero-title">Hello, I'm<br><span style="display: block; margin-top: 0.5em;">Nadir Hussain</span></h1>
+        <p class="hero-subtitle">Electrical Engineer | GIKI 2025</p>
+        <p class="hero-description">
+            Passionate about designing intelligent systems that bridge the gap between hardware and software.
+            Bringing innovation to life through smart technology and modern electronics.
+        </p>
+        <div class="cta-buttons">
+            <a href="#about" class="cta-btn cta-btn-primary">Learn More About Me</a>
+            <a href="#projects" class="cta-btn cta-btn-secondary">Explore My Projects</a>
+        </div>
+    </div>
+    <div class="profile-container" data-animate>
+        <img src="profile.jpg" alt="Nadir Hussain" class="profile-img">
+    </div>
+</section>
+
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="about-grid">
+            <div class="about-content" data-animate>
+                <h2 class="section-heading">Who I Am</h2>
+                <p>I am an Electrical Engineering student from GIKI'25 with a broad foundation in electrical principles and specialized interests across multiple domains. From power systems and control to electronics design and embedded systems, I enjoy solving complex engineering challenges and turning innovative ideas into practical solutions.</p>
+                
+                <div class="education-card">
+                    <h3>🎓 Education</h3>
+                    <p><strong>Electrical Engineering</strong><br>
+                    Ghulam Ishaq Khan Institute (GIKI)<br>
+                    Expected Graduation: 2025</p>
+                </div>
+            </div>
+
+            <div class="skills-grid" data-animate>
+                <div class="skill-card">
+                    <h3 class="skill-category">💻 Technical</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">Circuit design</li>
+                        <li class="skill-item">Power systems</li>
+                        <li class="skill-item">Embedded systems</li>
+                        <li class="skill-item">IoT Development</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3 class="skill-category">🛠 Software</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">MATLAB</li>
+                        <li class="skill-item">Python</li>
+                        <li class="skill-item">C/C++</li>
+                        <li class="skill-item">KiCad</li>
+						<li class="skill-item">PowerBI</li>
+
+                    </ul>
+                </div>
+				                <div class="skill-card">
+                    <h3 class="skill-category">🛠 Tools</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">Oscilloscopes</li>
+                        <li class="skill-item">Signal generators</li>
+                        <li class="skill-item">PSpice</li>
+                        <li class="skill-item">LabVIEW</li>
+						
+
+                    </ul>
+                </div>
+
+                <!-- Add more skill cards -->
+            </div>
+        </div>
+    </section>
+	
+    <!-- Rest of sections... -->
+
+
+	<!-- Projects Section -->
+<section id="projects "style="background-color: #f3f4f6; color: #1f2937;">
+    <div class="section-heading">Featured Projects</div>
+    <div class="projects-grid">
+        
+        <!-- Project Cards -->
+        <div class="project-card">
+            <div class="project-image-container">
+                <img src="Smart-Home.jpg" alt="Home Automation MTronic" class="project-image">
+            </div>
+            <div class="project-content">
+                <h3 class="project-title">Home Automation MTronic 🔌</h3>
+                <p class="project-description">Wi-Fi-based appliance control using NodeMCU ESP32 with capacitive touch sensors, relays, and IoT modules. Real-time monitoring and mobile-based control interface for automated lighting and appliance control.
+
+</p>
+                <div class="project-tags">
+                    <span class="project-tag">ESP32</span>
+                    <span class="project-tag">IoT</span>
+                    <span class="project-tag">Blynk</span>
+                    <span class="project-tag">Proteus</span>
+                </div>
+            </div>
+			
+        </div>
+
+		
+
+        <div class="project-card">
+            <div class="project-image-container">
+                <img src="Buck.jpg" alt="Buck Converter" class="project-image">
+            </div>
+            <div class="project-content">
+                <h3 class="project-title">Buck Converter 🔋</h3>
+                <p class="project-description">Designed a DC-DC Buck Converter with the LM2576HV-ADJ IC for efficient voltage step-down. Custom double-layer PCB layout, PID control for stability, and adjustable output range of 1.23–12V.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Power Electronics</span>
+                    <span class="project-tag">Circuit Design</span>
+                    <span class="project-tag">PCB Design</span>
+                    <span class="project-tag">MATLAB</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-image-container">
+                <img src="Image_Processing.png" alt="Image Processing with GUI" class="project-image">
+            </div>
+            <div class="project-content">
+                <h3 class="project-title">Image Processing with GUI 📷</h3>
+                <p class="project-description">Interactive MATLAB GUI for advanced image processing tasks like noise removal, edge detection, and histogram equalization. Real-time image uploads, filter application, and side-by-side comparisons.</p>
+                <div class="project-tags">
+                    <span class="project-tag">MATLAB</span>
+                    <span class="project-tag">Image Processing</span>
+                    <span class="project-tag">GUI</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-image-container">
+                <img src="RIS.png" alt="Reconfigurable Intelligent Surface" class="project-image">
+            </div>
+            <div class="project-content">
+                <h3 class="project-title">Reconfigurable Intelligent Surface 📡</h3>
+                <p class="project-description">Designed and tested a RIS for sub-6 GHz communication. Developed 4×4 passive and 2×2 semi-active arrays for dynamic reflection control, simulated with CST Studio and Keysight ADS, and tested in anechoic chambers.</p>
+                <div class="project-tags">
+                    <span class="project-tag">RF Design</span>
+                    <span class="project-tag">Sub-6 GHz</span>
+                    <span class="project-tag">CST Studio</span>
+                    <span class="project-tag">Keysight ADS</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Card 5 -->
+<div class="project-card" >
+    <div class="project-image-container">
+        <img src="Other.jpeg" alt="Other Projects" class="project-image">
+    </div>
+    <div class="project-content">
+        <h3 class="project-title">Other Projects ⚙️</h3>
+        <ul class="project-description">
+            <li>🔹 Line Following Bot: ESP32-based path detection with IR sensors.</li>
+            <li>🔹 RC Car: Wi-Fi controlled car with mobile/web interface.</li>
+            <li>🔹 Health Monitoring System: Arduino-based vital sign tracking with LCD display.</li>
+            <li>🔹 Cruise Control System: Arduino simulation for motor speed control.</li>
+        </ul>
+    </div>
+</div>
+
+
+    </div>
+</section>
+
+
+<!-- Project Modal -->
+<div class="project-modal" id="projectModal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <img class="modal-image" src="" alt="">
+        <div class="modal-text">
+            <h2 class="modal-title"></h2>
+            <p class="modal-description"></p>
+            <div class="modal-tags"></div>
+        </div>
+    </div>
+</div>
+
+
+<!--Expriences  -->
+	<section id="experience">
+    <div class="section-heading">Professional Journey</div>
+    <div class="timeline-container">
+        <!-- Timeline Item 1 -->
+        <div class="timeline-item" data-animate>
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">Jul 2024 - Aug 2024</div>
+            <div class="timeline-content">
+                <h3 class="timeline-title">Supply Chain Intern</h3>
+                <div class="timeline-company">🏭 Chevron</div>
+                <ul class="timeline-description">
+                    <li>Worked on supply chain optimization projects</li>
+                    <li>Focused on inventory management and logistics efficiency</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Timeline Item 2 -->
+        <div class="timeline-item" data-animate>
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">Summer 2023</div>
+            <div class="timeline-content">
+                <h3 class="timeline-title">Quality Assurance Intern</h3>
+                <div class="timeline-company">🚗 Haval (Sazgar Car Plant)</div>
+                <ul class="timeline-description">
+                    <li>Assisted in quality control processes</li>
+                    <li>Developed testing protocols for automotive electrical systems</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Timeline Item 3 -->
+        <div class="timeline-item" data-animate>
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2023 - Present</div>
+            <div class="timeline-content">
+                <h3 class="timeline-title">Campus Leader</h3>
+                <div class="timeline-company">📚 Teach for Pakistan</div>
+                <ul class="timeline-description">
+                    <li>Lead educational initiatives and workshops</li>
+                    <li>Focused on STEM education for underserved communities</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Timeline Item 4 -->
+        <div class="timeline-item" data-animate>
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2022 - Present</div>
+            <div class="timeline-content">
+                <h3 class="timeline-title">Electrical Head</h3>
+                <div class="timeline-company">⚡ Team HammerHead</div>
+                <ul class="timeline-description">
+                    <li>Lead electrical systems design and implementation</li>
+                    <li>Worked on competitive engineering projects</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Timeline Item 5 -->
+        <div class="timeline-item" data-animate>
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2022 - 2023</div>
+            <div class="timeline-content">
+                <h3 class="timeline-title">Event Coordinator</h3>
+                <div class="timeline-company">📅 American Society of Mechanical Engineering</div>
+                <ul class="timeline-description">
+                    <li>Organized technical workshops and competitions</li>
+                    <li>Coordinated logistics and participant management</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- Add this after Experience section -->
+<section id="contact">
+    <div class="section-heading">Get In Touch</div>
+    <div class="contact-container">
+        <div class="contact-info" data-animate>
+            <div class="info-card">
+                <h3 class="contact-subtitle">📬 Contact Information</h3>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <span class="contact-label">Email</span>
+                        <a href="mailto:nadier772@gmail.com" class="contact-value">nadier772@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <span class="contact-label">Phone</span>
+                        <span class="contact-value">+92 334 8497492</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <div>
+                        <span class="contact-label">LinkedIn</span>
+                        <a href="https://linkedin.com/in/nadirhussain-" target="_blank" class="contact-value">linkedin.com/in/nadirhussain-</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-form" data-animate>
+            <form id="contactForm" action="https://formspree.io/f/xvojnzqw" method="POST">
+                <h3 class="form-title">💬 Send a Message</h3>
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    Send Message 🚀
+                    <div class="submit-loader"></div>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+
+    <script>
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('[data-animate]').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            observer.observe(el);
+        });
+
+
+	  // Project Modal Handling
+    const projectCards = document.querySelectorAll('.learn-more');
+    const modal = document.getElementById('projectModal');
+    const closeModal = document.querySelector('.close-modal');
+
+    projectCards.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const card = e.target.closest('.project-card');
+            const title = card.querySelector('.project-title').innerText;
+            const description = card.querySelector('.project-description').innerText;
+            const tags = card.querySelector('.project-tags').innerHTML;
+            const image = card.querySelector('.project-image').src;
+
+            modal.querySelector('.modal-title').innerText = title;
+            modal.querySelector('.modal-description').innerText = description;
+            modal.querySelector('.modal-tags').innerHTML = tags;
+            modal.querySelector('.modal-image').src = image;
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Close modal
+    closeModal.addEventListener('click', () => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+
+	 // Contact Form Submission
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.querySelector('.submit-btn');
+    const loader = document.querySelector('.submit-loader');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Sending...';
+        
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                alert('Message sent successfully! 🎉');
+                form.reset();
+            } else {
+                alert('Oops! There was a problem. Please try again.');
+            }
+        } catch (error) {
+            alert('Network error. Please check your connection.');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Send Message 🚀';
+        }
+    });
+
+    </script>
+</body>
+</html>
+
